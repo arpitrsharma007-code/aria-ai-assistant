@@ -43,7 +43,21 @@ const HEADERS = {
   'Accept': 'application/json',
 };
 
+// Map common Indian index names to Yahoo Finance symbols
+const INDEX_MAP: Record<string, string> = {
+  'NIFTY': '^NSEI',
+  'NIFTY50': '^NSEI',
+  'NIFTY 50': '^NSEI',
+  'SENSEX': '^BSESN',
+  'BANKNIFTY': '^NSEBANK',
+  'BANK NIFTY': '^NSEBANK',
+  'NIFTYIT': '^CNXIT',
+  'NIFTY IT': '^CNXIT',
+};
+
 function toYahooSymbol(symbol: string): string {
+  const upper = symbol.toUpperCase();
+  if (INDEX_MAP[upper]) return INDEX_MAP[upper]; // Known Indian indices
   if (symbol.startsWith('^')) return symbol; // Index symbols
   if (symbol.endsWith('.NS') || symbol.endsWith('.BO')) return symbol;
   return `${symbol}.NS`;
