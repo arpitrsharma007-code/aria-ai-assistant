@@ -14,7 +14,7 @@ export function StockChart() {
   const selectedSymbol = useMarketStore((s) => s.selectedSymbol);
   const price = useMarketStore((s) => s.prices[selectedSymbol]);
   const [quote, setQuote] = useState<Quote | null>(null);
-  const [timeframe, setTimeframe] = useState(TIMEFRAMES[5]); // 1Y default
+  const [timeframe, setTimeframe] = useState<{ label: string; period: string; interval: string }>(TIMEFRAMES[5]); // 1Y default
   const [chartType, setChartType] = useState<'candle' | 'line'>('candle');
 
   // Fetch quote on symbol change
