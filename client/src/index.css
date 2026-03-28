@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-terminal-bg: #0a0e17;
+  --color-terminal-surface: #111827;
+  --color-terminal-border: #1e293b;
+  --color-terminal-green: #22c55e;
+  --color-terminal-red: #ef4444;
+  --color-terminal-blue: #3b82f6;
+  --color-terminal-yellow: #eab308;
+  --color-terminal-muted: #64748b;
+}
+
+body {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Consolas', monospace;
+  background: var(--color-terminal-bg);
+  color: #e2e8f0;
+  margin: 0;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-terminal-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+.price-up {
+  color: var(--color-terminal-green);
+}
+
+.price-down {
+  color: var(--color-terminal-red);
+}
+
+.price-flash-up {
+  animation: flashGreen 0.5s ease-out;
+}
+
+.price-flash-down {
+  animation: flashRed 0.5s ease-out;
+}
+
+@keyframes flashGreen {
+  0% { background-color: rgba(34, 197, 94, 0.3); }
+  100% { background-color: transparent; }
+}
+
+@keyframes flashRed {
+  0% { background-color: rgba(239, 68, 68, 0.3); }
+  100% { background-color: transparent; }
+}
+
+.ticker-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

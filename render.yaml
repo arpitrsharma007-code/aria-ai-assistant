@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: aladdin-trading
+    runtime: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: cd server && NODE_ENV=production node dist/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: NODE_TLS_REJECT_UNAUTHORIZED
+        value: "0"
